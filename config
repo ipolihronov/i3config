@@ -17,7 +17,7 @@ bindsym $mod+Return exec i3-sensible-terminal
 bindsym Shift+q kill
 
 # start dmenu (a program launcher)
-bindsym $mod+Shift+d exec rofi -show run -lines 3 -eh 2 -width 100 -padding 300 -opacity "85" -bw 0 -bc "$bg-color" -bg "$bg-color" -fg "$text-color" -hlbg "$bg-color" -hlfg "#9575cd" -font "System San Francisco Display 18"
+bindsym $mod+Shift+d exec rofi -show run -lines 5 -eh 2 -width 100 -padding 300 -opacity "25" -bw 0 -bc "$bg-color" -bg "$bg-color" -fg "$text-color" -hlbg "$bg-color" -hlfg "#9575cd" -font "System San Francisco Display 18"
 
 # change focus
 bindsym $mod+j focus left
@@ -73,7 +73,7 @@ set $workspace1 "0 :Terminals"
 set $workspace2 "1 :Browser"
 set $workspace3 "10 :Chats"
 set $workspace4 "11 :Other"
-set $workspace5 "100 :Music"
+set $SlackWS "100 :Slack"
 set $workspace6 "101 :Other"
 set $workspace7 "110 :Other"
 set $workspace8 "111 :Other"
@@ -151,6 +151,7 @@ exec_always feh --randomize --bg-scale $i3path/utils/background
 exec_always compton -f
 assign [class = "Firefox"] $workspace2
 assign [class = "Telegram"] $workspace3
+assign [class = "Slack"] $SlackWS
 
 # Pulse Audio controls
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +2% #increase sound volume
@@ -197,4 +198,6 @@ bar {
 		urgent_workspace   $urgent-bg-color   $urgent-bg-color   $text-color
 	}
 }
+
+exec --no-startup-id setxkbmap -layout us,bg -variant ,phonetic,mess -option grp:caps_toggle,compose:ralt,terminate:ctrl_alt_bksp
 
